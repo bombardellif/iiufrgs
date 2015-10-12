@@ -41,6 +41,7 @@
 \iiu@novodoc{cic}
 \iiu@novodoc{ecp}
 \iiu@novodoc{unibral}
+\iiu@novodoc{tuberlin}
 \iiu@novodoc{pgmicro}
 \iiu@novodoc{ppgc}
 
@@ -66,6 +67,7 @@
 \DeclareOption{english}{\@englishtrue\OptionNotUsed}\newif\if@english
 \DeclareOption{noabntcite}{\@noabntcitetrue\OptionNotUsed}\newif\if@noabntcite
 \DeclareOption{oneside}{\AtEndOfClass{\@twosidefalse}\OptionNotUsed}
+\DeclareOption{tuberlin}{\@tuberlintrue\OptionNotUsed}\newif\if@tuberlin
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions\relax
 
@@ -79,16 +81,21 @@
 \RequirePackage{keyval}
 \RequirePackage{fixltx2e}
 
-\RequirePackage[english,brazilian]{babel}
+\RequirePackage[english,brazilian,german]{babel}
 \input{brazilian.babel}
 \input{english.babel}
+\input{german.babel}
 \if@english
         \selectlanguage{english}
         \AtBeginDocument{\selectlanguage{english}}
 \fi
 \RequirePackage{lastpage}
 \RequirePackage{indentfirst}
-\RequirePackage{iidefs}
+\if@tuberlin
+  \RequirePackage{tuberlindefs}
+\else
+  \RequirePackage{iidefs}
+\fi
 \RequirePackage{setspace}
 \RequirePackage{ccaption}
 \RequirePackage{titlesec}
@@ -520,7 +527,11 @@
         \if@openright\cleardoublepage\else\clearpage\fi%
         \gdef\@englishkeywords{#2}%
         \iflanguage{english}{
+            \if@tuberlin
+                \begin{otherlanguage}{german}
+            \else
                 \begin{otherlanguage}{brazilian}
+            \fi
         }{
                 \begin{otherlanguage}{english}
         }
