@@ -314,7 +314,11 @@
   \end{titlepage}%
   \clearpage
   \setcounter{page}{2}%
-  \@ifundefined{@cipspecificinfo}{\@makenominatapage}{\@makecippage}
+  \if@tuberlin
+    \@makestatemenpage
+  \else
+    \@ifundefined{@cipspecificinfo}{\@makenominatapage}{\@makecippage}
+  \fi
   \setlinespacing
 }
 \newcommand{\thetitlepage}{%
@@ -434,6 +438,33 @@
 
   \setlinespacing
   \vspace{18.25mm}
+}
+
+
+%==============================================================================
+% Eidesstattliche Erklärung - Declaração de honestidade acadêmica
+%==============================================================================
+\newcommand{\@makestatemenpage}{%
+        \if@openright\cleardoublepage\else\clearpage\fi%
+
+        \begin{statementenv}
+          \statement
+        \end{statementenv}
+}
+
+\newenvironment{statementenv}{%
+        \setlength{\parindent}{0pt}
+        %\setstretch{1.415}
+
+}{%
+  \setlength{\parskip}{0.4 cm}
+
+  Berlin, den\\
+
+  \setstretch{0.5}
+  ...........................................................................\\
+  Unterschrift
+
 }
 
 
