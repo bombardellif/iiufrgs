@@ -36,6 +36,7 @@
 	\def\tablename{Tabela}%
 	\def\advisorname{Orientador}%
 	\def\coadvisorname{Co-orientador}%
+	\def\reviewername{Revisor}%
 	\def\listabbrvname{Lista de Abreviaturas e Siglas}%
 	\def\listsymbolname{Lista de S{\'\i}mbolos}%
 	\def\annexname{Anexo}%

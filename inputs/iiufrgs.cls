@@ -197,6 +197,13 @@
         \gdef\@coadvisorfirst{#3}
         \gdef\@coadvisor{#1~#3 #2}
 }
+\newcounter{ii@reviewercount}
+\DeclareRobustCommand{\reviewer}[3][]{
+        \addtocounter{ii@reviewercount}{1}
+        \expandafter\gdef\csname @reviewer\alph{ii@reviewercount}last\endcsname{#2}
+        \expandafter\gdef\csname @reviewer\alph{ii@reviewercount}first\endcsname{#3}
+        \expandafter\gdef\csname @reviewer\alph{ii@reviewercount}\endcsname{#1~#3 #2}
+}
 
 %==============================================================================
 % Definição do Departamento relacionado ao documento
@@ -348,6 +355,9 @@
 \newcommand{\titlepageadvisorinfo}{%
         \@ifundefined{@advisor}{}{\advisorname:~\@advisor\\}%
         \@ifundefined{@coadvisor}{}{\coadvisorname:~\@coadvisor\\}%
+        \@ifundefined{@reviewera}{}{\reviewername:~\@reviewera\\}%
+        \@ifundefined{@reviewerb}{}{\reviewername:~\@reviewerb\\}%
+        \@ifundefined{@reviewerc}{}{\reviewername:~\@reviewerc\\}%
 }
 
 %==============================================================================
