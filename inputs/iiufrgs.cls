@@ -82,7 +82,7 @@
 \RequirePackage{keyval}
 \RequirePackage{fixltx2e}
 
-\RequirePackage[english,brazilian,german]{babel}
+\RequirePackage[german,english,brazilian]{babel}
 \input{brazilian.babel}
 \input{english.babel}
 \input{german.babel}
